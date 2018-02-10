@@ -10,7 +10,8 @@ class App extends Component{
     state = {
         searchResults: [],
         playlistName: 'New Playlist',
-        playlistTracks: []
+        playlistTracks: [],
+        loading: false
       };
 
   addTrack = (newTrack) => {
@@ -43,17 +44,25 @@ class App extends Component{
   }
 
   searchTerm = (term) => {
+    this.setState({loading: true});
     Spotify.search(term).then(searchResults => {
-     this.setState({searchResults: searchResults});
+     this.setState({searchResults: searchResults, loading: false});
    });
   }
 
   render() {
+    let toLoad;
+    if (this.state.loading) {
+      toLoad = (
+        <div className='loader'></div>
+      );
+    }
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
            <SearchBar onSearch={this.searchTerm} />
+           {toLoad}
           <div className="App-playlist">
             <SearchResults  onAdd={(track)=>this.addTrack(track)}
               searchResults={this.state.searchResults} />

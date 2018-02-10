@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(256, 256, 256, 0.8);
+  padding: 10px 0;
 }
 
 .Track-action {
@@ -20,7 +21,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 72px;
+  height: auto;
 }
 
 .Track-information h3 {
@@ -30,5 +31,20 @@
 .Track-information p {
   font-size: .83rem;
   font-weight: 300;
+  padding-bottom: .15rem;
   color: rgba(256, 256, 256, 0.8);
+}
+
+button {
+  background: #010c3f;
+  color: white;
+  border-radius: 54px;
+  padding: 3px 5px;
+  cursor: pointer;
+  transition: background-color .25s;
+  outline: none;
+}
+
+button:hover {
+  background: rgba(108,65,233,.7);
 }
